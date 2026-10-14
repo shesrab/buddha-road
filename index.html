@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>한밤의 출가, 집을 나서다</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500&display=swap">
+<style>
+  /* Layout: one narrow night column, read on a phone in a bus and on a bridge.
+     Single dark theme by choice: the page is used outdoors after sunset. */
+  :root {
+    --night: #0d1020;
+    --night-2: #151a2e;
+    --ink: #e9e4d8;
+    --ink-soft: #a9a593;
+    --ink-faint: #6c6a63;
+    --lamp: #e3b269;
+    --lamp-dim: #8a6d3c;
+    --line: #272c42;
+    --display: 'Gowun Batang', 'Noto Serif KR', 'Apple SD Gothic Neo', serif;
+    --body: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+    color-scheme: dark;
+  }
+  html, body { background: var(--night); margin: 0; }
+  body {
+    color: var(--ink);
+    font-family: var(--body);
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    word-break: keep-all;
+  }
+  .wrap {
+    max-width: 30rem;
+    margin: 0 auto;
+    padding-inline: 20px;
+    padding-block: 2.5rem 5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4.5rem;
+  }
+  h1, h2, h3 { font-family: var(--display); font-weight: 700; text-wrap: balance; margin: 0; }
+  p { margin: 0; }
+  .eyebrow {
+    font-size: .78rem; letter-spacing: .12em; color: var(--lamp);
+    font-weight: 500; text-transform: uppercase;
+  }
+  /* cover */
+  .cover { display: flex; flex-direction: column; gap: 1.1rem; padding-top: 1rem; }
+  .cover .series { color: var(--ink-soft); font-size: .95rem; font-weight: 400; }
+  .cover h1 { font-size: 2.1rem; line-height: 1.3; }
+  .cover h1 small { display: block; font-size: 1rem; font-weight: 400; color: var(--lamp); margin-bottom: .5rem; letter-spacing: .05em; }
+  .cover .meta { color: var(--ink-faint); font-size: .9rem; font-weight: 400; }
+  .moon {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #f3e3bd, var(--lamp) 60%, #9c7a3d);
+    box-shadow: 0 0 40px 6px rgba(227,178,105,.18);
+    margin-bottom: .6rem;
+  }
+  /* sections */
+  section { display: flex; flex-direction: column; gap: 1.2rem; }
+  section h2 { font-size: 1.45rem; line-height: 1.4; }
+  section > p { color: var(--ink); }
+  .quiet { color: var(--ink-soft); }
+  .lead { font-family: var(--display); font-size: 1.25rem; line-height: 1.6; color: var(--ink); }
+  .question {
+    border-left: 2px solid var(--lamp);
+    padding: .3rem 0 .3rem 1.1rem;
+    font-family: var(--display);
+    font-size: 1.2rem; line-height: 1.65;
+  }
+  .note { font-size: .92rem; color: var(--ink-soft); font-weight: 400; }
+  /* route */
+  .route { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+  .route li {
+    position: relative; padding: 0 0 1.6rem 1.75rem;
+    border-left: 1px solid var(--line);
+    margin-left: .45rem;
+  }
+  .route li:last-child { border-left-color: transparent; padding-bottom: 0; }
+  .route li::before {
+    content: ""; position: absolute; left: -.33rem; top: .55rem;
+    width: .6rem; height: .6rem; border-radius: 50%;
+    background: var(--night); border: 1.5px solid var(--ink-soft);
+  }
+  .route li.stop::before { background: var(--lamp); border-color: var(--lamp); box-shadow: 0 0 10px rgba(227,178,105,.5); }
+  .route .place { font-family: var(--display); font-size: 1.15rem; font-weight: 700; line-height: 1.4; display: block; }
+  .route .what { display: block; color: var(--ink-soft); font-size: .95rem; margin-top: .2rem; }
+  .route .tag { display: inline-block; font-size: .75rem; letter-spacing: .08em; color: var(--lamp); font-weight: 500; margin-bottom: .15rem; }
+  .silence {
+    margin-top: .4rem;
+    background: var(--night-2); border: 1px solid var(--line); border-radius: 6px;
+    padding: 1rem 1.1rem; font-size: .95rem; color: var(--ink);
+    display: flex; flex-direction: column; gap: .35rem;
+  }
+  .silence b { font-weight: 500; color: var(--lamp); }
+  /* list read aloud */
+  .left-behind { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+  .left-behind li {
+    display: grid; grid-template-columns: 2rem 1fr; align-items: baseline; gap: .6rem;
+    padding: .95rem 0; border-bottom: 1px solid var(--line);
+    font-family: var(--display); font-size: 1.55rem; line-height: 1.35;
+  }
+  .left-behind li:first-child { border-top: 1px solid var(--line); }
+  .left-behind .n { font-family: var(--body); font-size: .8rem; color: var(--lamp-dim); font-variant-numeric: tabular-nums; font-weight: 400; }
+  .after { font-family: var(--display); font-size: 1.15rem; line-height: 1.7; color: var(--ink); padding-top: .4rem; }
+  /* refuge */
+  .refuge { display: flex; flex-direction: column; gap: .7rem; padding: 1.4rem 1.2rem; background: var(--night-2); border-radius: 8px; }
+  .refuge p { font-family: var(--display); font-size: 1.3rem; line-height: 1.5; }
+  .task { display: flex; flex-direction: column; gap: .3rem; }
+  .task .eyebrow { color: var(--ink-soft); }
+  .next { color: var(--ink-soft); font-size: .95rem; font-weight: 400; border-top: 1px solid var(--line); padding-top: 1.4rem; }
+  .next b { color: var(--ink); font-weight: 500; }
+  .scene { margin: .4rem 0; display: flex; flex-direction: column; gap: .6rem; }
+  .scene img { display: block; width: 100%; height: auto; border-radius: 4px; filter: brightness(.92); }
+  .scene figcaption { font-size: .88rem; color: var(--ink-soft); font-weight: 400; line-height: 1.6; }
+  .scene figcaption b { color: var(--lamp); font-weight: 500; margin-right: .4rem; }
+  footer { color: var(--ink-faint); font-size: .8rem; text-align: center; display: flex; flex-direction: column; gap: .4rem; }
+  footer a { color: var(--ink-soft); }
+  @media (prefers-reduced-motion: no-preference) {
+    .moon { animation: rise 1.6s ease-out both; }
+    @keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  }
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+
+  <header class="cover">
+    <div class="moon" aria-hidden="true"></div>
+    <p class="series">청년, 불교를 만나다 · 두 번째 시간</p>
+    <h1><small>2회차</small>한밤의 출가,<br>집을 나서다</h1>
+    <p class="meta">2026년 10월 14일 수요일 저녁 · 경주 첨성대에서 월정교까지</p>
+  </header>
+
+  <section>
+    <p class="eyebrow">오늘 밤의 상상</p>
+    <h2>오늘 밤, 이곳은 카필라바스투</h2>
+    <p>첨성대 일대와 월성 언덕은 부처님의 가르침을 깊이 받아들였던 신라의 왕궁이 있던 자리입니다. 오늘 밤만은 이곳을 싯다르타가 살던 성, 카필라바스투라고 생각해 봅니다.</p>
+    <p>아름답고, 화려하고, 누구나 한 번쯤 살아 보고 싶은 곳. 그런데 성문 밖에 나갔던 젊은 왕자는 그날 이후 한 가지 생각에서 벗어나지 못합니다.</p>
+    <figure class="scene">
+      <img src="img/gates.jpg" alt="네 장면: 병들어 누운 사람, 상여에 실려 가는 죽은 사람, 지팡이를 짚은 늙은 사람, 나무 아래 앉은 수행자" width="1000" height="679" loading="lazy">
+      <figcaption><b>지난 시간</b> 성문 밖에서 본 네 사람. 병든 사람, 죽은 사람, 늙은 사람, 그리고 수행자.</figcaption>
+    </figure>
+    <p>스물아홉의 싯다르타는 이 모든 것을 뒤로 하고 한밤에 성을 나섰습니다. 사랑하는 아내와 갓 태어난 아들이 잠든 방을 들여다보고, 아무에게도 말하지 않고 떠났습니다.</p>
+    <figure class="scene">
+      <img src="img/night.jpg" alt="문가에서 휘장을 젖히고 잠든 아내를 바라보는 싯다르타" width="1000" height="678" loading="lazy">
+      <figcaption><b>그날 밤</b> 문가에서 잠든 아내를 바라보는 싯다르타.</figcaption>
+    </figure>
+    <p class="lead">왜였을까요. 그 환한 불빛 안에서도 막을 수 없는 것이 있었습니다.</p>
+    <p class="quiet">월성 언덕에 올라 불빛이 수놓인 첨성대 쪽을 내려다보면서, 그 밤의 한 사람을 떠올려 봅니다.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">오늘의 질문</p>
+    <p class="question">다들 가는 길이 있습니다. 부모님이 바라는 길, 남들이 다 가는 길. 그쪽으로 가고 있긴 한데, 이게 맞나 싶은 순간이 있었나요?</p>
+    <p class="note">대답하지 않아도 됩니다. 걷는 동안 혼자 생각하면 충분합니다.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">오늘 걷는 길</p>
+    <h2>성 안에서 성 밖으로</h2>
+    <ol class="route">
+      <li>
+        <span class="place">첨성대에서 월성으로</span>
+        <span class="what">왕궁으로 들어가는 오르막. 여기까지는 편하게 이야기해도 됩니다.</span>
+      </li>
+      <li class="stop">
+        <span class="tag">출발</span>
+        <span class="place">월성 언덕</span>
+        <span class="what">성 안의 불빛을 내려다봅니다. 잠든 궁, 아내와 아들, 마부를 깨우던 그날 밤 이야기.</span>
+      </li>
+      <li>
+        <span class="place">내려오는 길</span>
+        <span class="what">성을 넘던 밤. 여기서부터 도착할 때까지 말을 하지 않습니다. 앞사람과 다섯 걸음쯤 띄우고 혼자 걷습니다.</span>
+      </li>
+      <li class="stop">
+        <span class="tag">도착</span>
+        <span class="place">월정교</span>
+        <span class="what">혼자가 되다 · 다른 사람이 되다 · 돌아보다. 출발한 언덕을 돌아보고, 함께 읽고, 회향합니다.</span>
+      </li>
+    </ol>
+    <div class="silence">
+      <span><b>걷는 동안에는 휴대폰을 넣어 두세요.</b></span>
+      <span>어두운 길이라 발밑을 보셔야 하고, 말없이 걷는 시간은 화면 없이 지나야 자기 생각이 들립니다. 이 화면은 월정교에 모였을 때 다시 꺼냅니다.</span>
+    </div>
+  </section>
+
+  <section id="list">
+    <p class="eyebrow">월정교에서 함께 읽기</p>
+    <h2>그날 밤 두고 온 것들</h2>
+    <figure class="scene">
+      <img src="img/hair.jpg" alt="물가에서 칼로 상투를 자르는 싯다르타와 곁에서 장신구를 받아 든 마부, 흰 말" width="1000" height="673" loading="lazy">
+      <figcaption><b>다른 사람이 되다</b> 물가에서 머리를 자르는 싯다르타. 곁에 마부 찬나와 말 칸타카.</figcaption>
+    </figure>
+    <p class="note">한 사람이 하나씩, 돌아가며 소리 내어 읽습니다.</p>
+    <ol class="left-behind">
+      <li><span class="n">1</span><span>왕이 될 자리</span></li>
+      <li><span class="n">2</span><span>아버지 정반왕</span></li>
+      <li><span class="n">3</span><span>아내 야소다라</span></li>
+      <li><span class="n">4</span><span>갓 태어난 아들 라훌라</span></li>
+      <li><span class="n">5</span><span>마부 찬나</span></li>
+      <li><span class="n">6</span><span>말 칸타카</span></li>
+      <li><span class="n">7</span><span>비단옷과 장신구</span></li>
+      <li><span class="n">8</span><span>그리고 자기 머리카락</span></li>
+    </ol>
+    <p class="after">이 사람은 나중에 이들을 다시 만납니다. 버린 것이 아니라 두고 간 것이었고, 다른 사람이 되어 돌아왔습니다.</p>
+  </section>
+
+  <section id="refuge">
+    <p class="eyebrow">삼귀의</p>
+    <div class="refuge">
+      <p>거룩한 부처님께 귀의합니다.</p>
+      <p>거룩한 가르침에 귀의합니다.</p>
+      <p>거룩한 스님들께 귀의합니다.</p>
+    </div>
+    <div class="task">
+      <p class="eyebrow">앞으로 2주 동안</p>
+      <p>하루에 한 번, 삼귀의를 소리 내어 외워 봅니다. 때와 장소는 상관없습니다.</p>
+    </div>
+    <p class="next">다음 시간은 <b>10월 28일(수) 18:00, 정각원</b>입니다.<br>3회차 〈보리수 아래, 진리의 발견〉. 성을 나선 사람이 6년을 헤매다 답을 찾는 이야기입니다.</p>
+  </section>
+
+  <footer>
+    <p>그림 출처: <a href="https://www.dhammatalks.net/Articles/Life_of_the_Buddha_in_Pictures.htm">The Life of the Buddha in Pictures</a> (DhammaTalks.net, 원출처 vimuttisukha.com)</p>
+    <p>동국대학교 WISE캠퍼스 정각원 · 청년, 불교를 만나다</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
